@@ -1,50 +1,129 @@
-# React + TypeScript + Vite
+✨ Features
+🔹 1. Multi-Step Navigation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The form is split into multiple steps:
 
-Currently, two official plugins are available:
+Personal Info
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Select Your Plan
 
-## Expanding the ESLint configuration
+Pick Add-ons
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Review Summary
 
-- Configure the top-level `parserOptions` property like this:
+Confirmation Screen
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Each step updates the global form state properly using React Context + Reducer.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+🔹 2. Plan Selection
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Users can choose between:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Arcade
+
+Advanced
+
+Pro
+
+Each plan has both monthly and yearly pricing.
+
+The pricing system updates automatically based on the billing toggle.
+
+🔹 3. Billing Toggle
+
+A switch allows users to choose:
+
+Monthly billing
+
+Yearly billing (with discounts)
+
+The UI updates instantly for both plans and add-ons.
+
+🔹 4. Add-ons Selection
+
+Users can pick optional add-ons such as:
+
+Online Service
+
+Larger Storage
+
+Customizable Profile
+
+Add-ons are priced differently for monthly and yearly billing.
+
+🔹 5. Summary Calculation
+
+The summary page automatically calculates:
+
+Selected plan price
+
+Add-ons total
+
+Grand total (per month or per year)
+
+No hardcoding — all values come from real state.
+
+🔹 6. Global State Management
+
+All form details are managed using:
+
+React Context
+
+useReducer
+
+TypeScript
+
+This ensures clean, predictable flow through every step.
+
+🛠️ Tech Stack
+
+React
+
+TypeScript (TSX)
+
+CSS Modules
+
+React Context + Reducer
+
+Local JSON data fetching
+
+📂 Folder Structure
+/src
+  /components
+  /context
+  /pages
+  /styles
+  plans.json
+
+📌 How It Works
+1. PlanContext
+
+Stores:
+
+Current plan
+
+Billing type (monthly/yearly)
+
+Selected add-ons
+
+Pricing tables
+
+2. Reducer
+
+Handles actions like:
+
+Select plan
+
+Toggle billing
+
+Select add-on
+
+Load plans/add-ons from JSON
+
+3. Summary Page
+
+Dynamically calculates totals using reducer state.
+
+🚀 Setup
+npm install
+npm run dev
